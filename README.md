@@ -1,2 +1,2 @@
-# tv-movie-db
-![image](https://github.com/nathanielyeldo/tv-movie-db/assets/56597570/a9da3ce3-05ad-458f-ad22-a6694b691039)
+# movies-db
+![image](https://github.com/nathanielyeldo/movies-db/assets/56597570/7b781128-f4fa-4cf7-983a-d0f575c43367)
