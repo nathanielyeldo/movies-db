@@ -50,14 +50,6 @@ CREATE TABLE IF NOT EXISTS Users (
     Password VARCHAR(255)
 );
 
-CREATE TABLE IF NOT EXISTS UserRoleMapping (
-    UserRoleMapID VARCHAR(255) PRIMARY KEY,
-    UserID VARCHAR(255),
-    UserRoleID VARCHAR(255),
-    FOREIGN KEY (UserID) REFERENCES Users(UserID),
-    FOREIGN KEY (UserRoleID) REFERENCES UserRoles(UserRoleID)
-);
-
 CREATE TABLE IF NOT EXISTS Customers (
     CustomerID VARCHAR(255) PRIMARY KEY,
     FirstName VARCHAR(255),
@@ -66,19 +58,32 @@ CREATE TABLE IF NOT EXISTS Customers (
     Country VARCHAR(255)
 );
 
+CREATE TABLE IF NOT EXISTS Login (
+    LoginID VARCHAR(255) PRIMARY KEY,
+    LoginDate DATE,
+    LoginTime TIME,
+    LogoutTime TIME
+);
+
+CREATE TABLE IF NOT EXISTS Ratings (
+    RatingID VARCHAR(255) PRIMARY KEY,
+    RatingDescription VARCHAR(255)
+);
+
+CREATE TABLE IF NOT EXISTS UserRoleMapping (
+    UserRoleMapID VARCHAR(255) PRIMARY KEY,
+    UserID VARCHAR(255),
+    UserRoleID VARCHAR(255),
+    FOREIGN KEY (UserID) REFERENCES Users(UserID),
+    FOREIGN KEY (UserRoleID) REFERENCES UserRoles(UserRoleID)
+);
+
 CREATE TABLE IF NOT EXISTS UserCustomer (
     UserCustomerID VARCHAR(255) PRIMARY KEY,
     UserID VARCHAR(255),
     CustomerID VARCHAR(255),
     FOREIGN KEY (UserID) REFERENCES Users(UserID),
     FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
-);
-
-CREATE TABLE IF NOT EXISTS Login (
-    LoginID VARCHAR(255) PRIMARY KEY,
-    LoginDate DATE,
-    LoginTime TIME,
-    LogoutTime TIME
 );
 
 CREATE TABLE IF NOT EXISTS UserLogin (
@@ -107,11 +112,6 @@ CREATE TABLE IF NOT EXISTS MovieCast (
     FOREIGN KEY (MovieDetailsID) REFERENCES MovieDetails(MovieDetailsID),
     FOREIGN KEY (ActorID) REFERENCES Actors(ActorID),
     FOREIGN KEY (RoleID) REFERENCES Roles(RoleID)
-);
-
-CREATE TABLE IF NOT EXISTS Ratings (
-    RatingID VARCHAR(255) PRIMARY KEY,
-    RatingDescription VARCHAR(255)
 );
 
 CREATE TABLE IF NOT EXISTS MovieRatings (
